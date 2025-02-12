@@ -1,0 +1,209 @@
+#root {
+  width: 100vw;
+  height: 100vh; 
+}
+
+html, body {
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  background-color: #000000;
+}
+
+/* Centered full-screen container */
+.app-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Loader Styles */
+.loader-container {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s ease;
+}
+
+.loader-capsule {
+  width: 120px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  text-align: center;
+  line-height: 40px;
+  font-size: 1.2rem;
+  border-radius: 20px;
+  border: 1px solid white;
+}
+
+/* CTA Button */
+.button-container {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: black;
+  color: white;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  background: linear-gradient(black, black) padding-box,
+              linear-gradient(to right, yellow, darkorchid) border-box;
+  border: 2px solid transparent;
+  cursor: pointer;
+  border-radius: 15px;
+  transition: transform 0.3s, background-color 0.3s;
+  overflow: hidden;
+}
+
+.button-container::after {
+  content: 'Enter the experience';
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 100%;
+  left: 0;
+  background-color: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: top 0.3s;
+}
+
+.button-container:hover {
+  transform: translateX(-50%) translateY(-5px);
+}
+
+.button-container:hover::after {
+  top: 0;
+}
+
+/* Fade-out effect */
+.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* VIDEO CONTAINER */
+.video-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 80vw;
+  height: 90vh;
+  transform: translate(-50%, -50%) !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.8);
+  background: linear-gradient(black, black) padding-box,
+              linear-gradient(to right, yellow, darkorchid) border-box;
+  border: 0.75rem solid transparent;
+  border-radius: 16px;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+/* VIDEO PLAYER */
+.video-player {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* MUTE BUTTON */
+.mute-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.mute-button:hover {
+  opacity: 0.8;
+}
+
+/* PLAY/PAUSE BUTTON */
+.play-pause-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Show Play/Pause on Hover */
+.video-container:hover .play-pause-button {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* 🔹 RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+  .video-container {
+    width: 90vw;
+    height: 70vh;
+    border: 0.5rem solid transparent;
+    border-radius: 12px;
+  }
+
+  .play-pause-button {
+    font-size: 2.5rem;
+  }
+
+  .mute-button {
+    font-size: 1.2rem;
+    top: 5px;
+    right: 5px;
+  }
+
+  .button-container {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .video-container {
+    width: 95vw;
+    height: 60vh;
+    border: 0.4rem solid transparent;
+    border-radius: 10px;
+  }
+
+  .play-pause-button {
+    font-size: 2rem;
+  }
+
+  .mute-button {
+    font-size: 1rem;
+  }
+
+  .button-container {
+    font-size: 12px;
+    padding: 8px 16px;
+  }
+}
