@@ -100,8 +100,8 @@ body {
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 80vw;
-  height: 90vh;
+  width: 60vw;
+  height: 70vh;
   transform: translate(-50%, -50%) !important;
   display: flex;
   align-items: center;
@@ -112,7 +112,7 @@ body {
   border: 0.75rem solid transparent;
   border-radius: 16px;
   overflow: hidden;
-  z-index: 9999;
+  /* z-index: 9999; */
 }
 
 /* VIDEO PLAYER */
@@ -125,7 +125,7 @@ body {
 /* MUTE BUTTON */
 .mute-button {
   position: absolute;
-  top: 10px;
+  bottom: 10px;
   right: 10px;
   font-size: 1.5rem;
   background: none;
@@ -139,26 +139,92 @@ body {
   opacity: 0.8;
 }
 
-/* PLAY/PAUSE BUTTON */
-.play-pause-button {
+
+
+.fullscreen {
+  width: 100vw !important;
+  height: 100vh !important;
+  border: none;
+  background: black;
+}
+
+/* Close Button */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.close-button:hover {
+  opacity: 0.8;
+}
+
+/* Default play button (always visible before fullscreen) */
+.play-button {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 3rem;
-  background: none;
-  border: none;
+  background: transparent;
   color: white;
-  cursor: pointer;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  border: none;
+  opacity: 1; /* Always visible */
+  transition: opacity 0.3s ease-in-out;
 }
 
-/* Show Play/Pause on Hover */
-.video-container:hover .play-pause-button {
+/* Fullscreen Mode - Hide play button by default */
+.video-container.fullscreen .play-button {
+  opacity: 0; /* Hidden by default in fullscreen */
+}
+
+/* Play Button Container (Only visible in fullscreen mode) */
+.play-button-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px; /* Adjust as needed */
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   opacity: 1;
-  visibility: visible;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Hide play button inside the container by default */
+.play-button-container .play-button {
+  opacity: 0;
+}
+
+/* Show play button only when hovering over the container */
+.play-button-container:hover .play-button {
+  opacity: 1;
+}
+
+.exit-button {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translate(-50%);
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: black;
+  color: white;
+  background: linear-gradient(black, black) padding-box,
+              linear-gradient(to right, yellow, darkorchid) border-box;
+  border: 2px solid transparent;
+  cursor: pointer;
+  border-radius: 15px;
+  transition: transform 0.3s, background-color 0.3s;
+  z-index: 10;
 }
 
 /* 🔹 RESPONSIVE DESIGN */
